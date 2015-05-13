@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="shortening utl">
+		<meta name="author" content="Sebslakes">
+		<title>turl.cl</title>
+		
+		<!-- Stylesheets -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/bootstrapValidator.min.css" rel="stylesheet">
+		<link href="css/ladda-themeless.min.css" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/owl.carousel.css" rel="stylesheet">
+		<link href="css/owl.theme.css" rel="stylesheet">
+		<link href="css/app.css" rel="stylesheet">
+			
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- Preloader -->
+		<div id="preloader">
+			<div id="status" class="text-center">
+				<div class="spinner">
+				  <div class="rect1"></div>
+				  <div class="rect2"></div>
+				  <div class="rect3"></div>
+				  <div class="rect4"></div>
+				  <div class="rect5"></div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Main -->
+		<section class="main text-center" id="home">
+			<div class="page">
+				<div class="wrapper">
+					<div class="container">
+						<h1 class="heading">Turl.cl</h1>
+						<p>
+							Ingresa la url que quieres acortar y dejala chiquitita como una pepita de ají.
+						</p>
+
+						<!-- Subscription form -->
+						<form class="form-inline signup" action="php/signupForm.php" role="form" id="signupForm">
+							<div class="form-group">
+								<input type="text" id="url" name="url" class="form-control" placeholder="Ingresa tu url aquí">
+							</div>
+							<div class="form-group">
+								<button type="button" class="btn btn-success" data-style="expand-left" onclick="acortar();"><span class="ladda-label">Cortar URL!</span></button>
+							</div><p></p>
+							<div class="form-group">
+								<div id="resultado" style="display:none">
+										<div class="alert alert-success">
+										  <button type="button" class="close" data-dismiss="alert" aria-hidden="true"> ×</button>
+										  <i class="fa fa-times-circle"></i><strong> Maravilloso!</strong> no coinciden con los registros!
+										</div>
+								</div>
+							</div>
+							
+						</form>
+
+						
+						<footer class="text-center">
+
+						</footer>
+					</div>
+					<div class="arrow-down">
+						<p>Sitio web desarrollado por Sebslakes 2015</p>
+						<!--<a class="scroll" href="#about" id="scroll"><i class="fa fa-angle-double-down"></i></a>-->
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.backstretch.min.js"></script>
+		<script src="js/jquery.countdown.min.js"></script>
+		<script src="js/bootstrapValidator.min.js"></script>
+		<script src="js/validator/emailAddress.js"></script>
+		<script src="js/spin.min.js"></script>
+		<script src="js/ladda.min.js"></script>
+		<script src="js/retina.min.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/init.js"></script>
+		
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-51252082-4', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
+		<script type="text/javascript">
+
+			  function acortar(){
+			  	urllarga=document.getElementById('url').value;
+			  	console.log(urllarga);
+			  	$.post("magia.php?urllarga="+urllarga)
+					.done(function( data ){
+						if(data=="No pusiste una url valida"){
+									mensaje='<div class="alert alert-danger" col-sm-6>'+
+													'<button type="button" class="close" data-dismiss="alert" aria-hidden="true"> ×</button>'+
+													'<i class="fa fa-times-circle"></i><strong> Error!</strong> '+data+'<div>'
+							}else{
+									mensaje='<div class="alert alert-success" col-sm-6><button type="button" class="close" data-dismiss="alert" aria-hidden="true"> × </button>'+ data +' <div>'
+								}
+						
+						document.getElementById('resultado').innerHTML=mensaje;
+						document.getElementById('resultado').style.display="block";
+					});
+			  }
+		</script>
+	</body>
+</html>
