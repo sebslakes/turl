@@ -115,7 +115,7 @@
 			  function acortar(){
 			  	urllarga=document.getElementById('url').value;
 			  	console.log(urllarga);
-			  	$.post("magia.php?urllarga="+urllarga)
+			  	$.post("url_json.php",urllarga)
 					.done(function( data ){
 						if(data=="No pusiste una url valida"){
 									mensaje='<div class="alert alert-danger" col-sm-6>'+
