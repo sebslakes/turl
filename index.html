@@ -77,7 +77,7 @@
 						</footer>
 					</div>
 					<div class="arrow-down">
-						<p>Sitio web desarrollado por Sebslakes 2015</p>
+						<p>Sitio web desarrollado por Sebslakes 2015 <br> <a href="https://github.com/sebslakes/turl"><img src="http://turl.cl/img/github.png"></a></p>
 						<!--<a class="scroll" href="#about" id="scroll"><i class="fa fa-angle-double-down"></i></a>-->
 					</div>
 				</div>
@@ -115,7 +115,7 @@
 			  function acortar(){
 			  	urllarga=document.getElementById('url').value;
 			  	console.log(urllarga);
-			  	$.post("url_json.php",urllarga)
+			  	$.post("listener.php",urllarga)
 					.done(function( data ){
 						if(data=="No pusiste una url valida"){
 									mensaje='<div class="alert alert-danger" col-sm-6>'+
